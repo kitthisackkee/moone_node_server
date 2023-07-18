@@ -11,7 +11,7 @@ const corsOption = {
 
 app.use(cors(corsOption))
 
-app.use("/image", express.static(path.join(__dirname, "./uploaded")))
+app.use("/image", express.static(path.join(__dirname, "./image")))
 app.use(express.json({limit: '3mb'}))
 app.use(express.urlencoded({limit: '3mb', extended: true}))
 app.use(expressSanitizer())
@@ -32,4 +32,6 @@ app.use('/api/v1', require('./api/v1/api'))
 const server = app.listen(3000, function() {
     const port = server.address().port;
     console.log("Server running on http://localhost:", port)
+    let bill_id = Math.floor(Math.random() * (1000000 - 100 + 1)) + 100;
+    console.log(bill_id);
 })
